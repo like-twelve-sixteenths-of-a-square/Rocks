@@ -10,9 +10,12 @@ public class TurretControl : MonoBehaviour
 
     public GameObject shooter;
 
+    private bool fireDelay;
+    public float timeDelay;
+
     void Start()
     {
-        
+        fireDelay = true;
     }
 
     // Update is called once per frame
@@ -28,9 +31,17 @@ public class TurretControl : MonoBehaviour
             transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKey(KeyCode.K) && fireDelay)
         {
-            Instantiate(shell, shooter.transform.position, shooter.transform.rotation);
+            fireDelay = false;
+            StartCoroutine(TonkProcess());
         }
+    }
+
+    IEnumerator TonkProcess()
+    {
+        Instantiate(shell, shooter.transform.position, shooter.transform.rotation);
+        yield return new WaitForSeconds(timeDelay);
+        fireDelay = true;
     }
 }
