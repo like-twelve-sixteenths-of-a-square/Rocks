@@ -4,32 +4,52 @@ using UnityEngine;
 
 public class CheckerRoutine : MonoBehaviour
 {
-    private float maxX;
-    private float maxZ;
+    private float maxX = 25;
+    private float maxZ = 14;
 
-    public GameObject checker;
+    public GameObject[] rockSpawned;
+
+    private GameObject player;
 
     void Start()
     {
-        Vector3 spawnPos = new Vector3 (Random.Range(-maxX, maxX), 0, Random.Range(-maxZ, maxZ));
-        transform.position = spawnPos;
+        player = GameObject.Find("tonk");
 
-        if (transform.position.x <= 2 && transform.position.z <= 2)
-        {
-            Instantiate(checker);
-            Debug.Log("Spawn failed, try again...");
-            Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("spawn success");
-            Destroy(gameObject);
-        }
+        StartCoroutine(SpawnProcess());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator SpawnProcess()
     {
-        
+        Vector3 spawnPos = new Vector3(Random.Range(-maxX, maxX), 0, Random.Range(-maxZ, maxZ));
+
+        yield return new WaitForSeconds(0.1f);
+
+        transform.position = spawnPos;
+
+        yield return new WaitForSeconds(0.1f);
+
+        bool spawnCheck = true;
+
+        while (spawnCheck)
+        {
+            if ((player.transform.position.x - transform.position.x) <= 2 && (player.transform.position.z - transform.position.z) <= 2)
+            {
+                Debug.Log("Spawn check failed, try again...");
+                Vector3 newPos = new Vector3(Random.Range(-maxX, maxX), 0, Random.Range(-maxZ, maxZ));
+                transform.position = newPos;
+            }
+            else
+            {
+                spawnCheck = false;
+            }
+        }
+
+        Debug.Log("Spawn check successful, spawning rock and destroying.");
+
+        int rockIndex = Random.Range(0, rockSpawned.Length);
+
+        Instantiate(rockSpawned[rockIndex], transform.position, transform.rotation);
+
+        Destroy(gameObject);
     }
 }

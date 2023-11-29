@@ -6,23 +6,75 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject checker;
 
+    public int rockCount;
+    public int waveNumber = 1;
+
+    public GameManager manager;
+
     void Start()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            Instantiate(checker);
-        }
+        manager = GameObject.Find("Manager").GetComponent<GameManager>();
+        SpawnNextWave(waveNumber);
+        StartCoroutine(SpawnProcess());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        rockCount = GameObject.FindGameObjectsWithTag("Rock").Length;
+    }
+
+    IEnumerator SpawnProcess()
+    {
+        yield return new WaitForSeconds(5);
+
+        while (true)
         {
-            for (int i = 0; i < 10; i++)
+            while (rockCount > 0)
             {
-                Instantiate(checker);
+                yield return new WaitForSeconds(0.5f);
             }
+
+            waveNumber++;
+
+            for (int i = 0; i < Random.Range(1, 4); i++)
+            {
+                manager.nextWaveText1.enabled = true;
+                yield return new WaitForSeconds(0.1f);
+                manager.nextWaveText1.enabled = false;
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            manager.nextWaveText1.enabled = true;
+
+            yield return new WaitForSeconds(0.75f);
+
+            manager.nextWaveText1.enabled = false;
+
+            for (int i = 0; i < Random.Range(1, 4); i++)
+            {
+                manager.nextWaveText2.enabled = true;
+                yield return new WaitForSeconds(0.75f);
+                manager.nextWaveText2.enabled = false;
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            manager.nextWaveText2.enabled = true;
+
+            yield return new WaitForSeconds(1.5f);
+
+            manager.nextWaveText2.enabled = false;
+            SpawnNextWave(waveNumber);
+
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    void SpawnNextWave(int rockCount)
+    {
+        for (int i = 0; i < (rockCount * Random.Range(1, 3)); i++)
+        {
+            Instantiate(checker);
         }
     }
 }

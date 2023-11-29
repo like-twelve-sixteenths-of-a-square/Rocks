@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2092510135877548473}
   m_Layer: 0
   m_Name: Checker
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ee8cce2dd673c40825737592c07a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checker: {fileID: 3182059155325665490}
+  rockSpawned:
+  - {fileID: 3923823926479371651, guid: d86a0ff8bca4aa844bfee19cee70239b, type: 3}
+  - {fileID: 3892423859009976039, guid: edacc1f84d1392b4ea086c6daf1ed251, type: 3}
+  - {fileID: 3097613558046733460, guid: b9345306ad5d48b4e9f7ed858a25aa16, type: 3}

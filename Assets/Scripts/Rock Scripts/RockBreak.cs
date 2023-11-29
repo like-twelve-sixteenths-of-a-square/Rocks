@@ -7,11 +7,18 @@ public class RockBreak : MonoBehaviour
     public bool canSplit;
     public GameObject splitTo;
 
+    private GameManager manager;
+
+    private void Start()
+    {
+        manager = GameObject.Find("Manager").GetComponent<GameManager>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Shell"))
         {
-            Debug.Log("thunk");
+            manager.scoreCount++;
 
             if (canSplit)
             {

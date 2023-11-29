@@ -10,7 +10,7 @@ public class RockMovement : MonoBehaviour
     void Start()
     {
         transform.Rotate(0, Random.Range(1, 360), 0);
-        speed = Random.Range(4, 7);
+        speed = Random.Range(2, 5);
     }
 
     void Update()
