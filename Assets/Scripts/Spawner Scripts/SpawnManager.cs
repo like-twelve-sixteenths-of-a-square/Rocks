@@ -14,8 +14,6 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         manager = GameObject.Find("Manager").GetComponent<GameManager>();
-        SpawnNextWave(waveNumber);
-        StartCoroutine(SpawnProcess());
     }
 
     // Update is called once per frame
@@ -24,53 +22,56 @@ public class SpawnManager : MonoBehaviour
         rockCount = GameObject.FindGameObjectsWithTag("Rock").Length;
     }
 
-    IEnumerator SpawnProcess()
+    public IEnumerator SpawnProcess()
     {
         yield return new WaitForSeconds(5);
 
-        while (true)
+        if (manager.gameRunning)
         {
-            while (rockCount > 0)
+            while (true)
             {
-                yield return new WaitForSeconds(0.5f);
-            }
+                while (rockCount > 0)
+                {
+                    yield return new WaitForSeconds(0.5f);
+                }
 
-            waveNumber++;
+                waveNumber++;
 
-            for (int i = 0; i < Random.Range(1, 4); i++)
-            {
+                for (int i = 0; i < 3; i++)
+                {
+                    manager.nextWaveText1.enabled = true;
+                    yield return new WaitForSeconds(0.05f);
+                    manager.nextWaveText1.enabled = false;
+                    yield return new WaitForSeconds(0.05f);
+                }
+
                 manager.nextWaveText1.enabled = true;
-                yield return new WaitForSeconds(0.1f);
-                manager.nextWaveText1.enabled = false;
-                yield return new WaitForSeconds(0.1f);
-            }
 
-            manager.nextWaveText1.enabled = true;
-
-            yield return new WaitForSeconds(0.75f);
-
-            manager.nextWaveText1.enabled = false;
-
-            for (int i = 0; i < Random.Range(1, 4); i++)
-            {
-                manager.nextWaveText2.enabled = true;
                 yield return new WaitForSeconds(0.75f);
+
+                manager.nextWaveText1.enabled = false;
+
+                for (int i = 0; i < 2; i++)
+                {
+                    manager.nextWaveText2.enabled = true;
+                    yield return new WaitForSeconds(0.5f);
+                    manager.nextWaveText2.enabled = false;
+                    yield return new WaitForSeconds(0.5f);
+                }
+
+                manager.nextWaveText2.enabled = true;
+
+                yield return new WaitForSeconds(1.5f);
+
                 manager.nextWaveText2.enabled = false;
-                yield return new WaitForSeconds(0.5f);
+                SpawnNextWave(waveNumber);
+
+                yield return new WaitForSeconds(1);
             }
-
-            manager.nextWaveText2.enabled = true;
-
-            yield return new WaitForSeconds(1.5f);
-
-            manager.nextWaveText2.enabled = false;
-            SpawnNextWave(waveNumber);
-
-            yield return new WaitForSeconds(1);
         }
     }
 
-    void SpawnNextWave(int rockCount)
+    public void SpawnNextWave(int rockCount)
     {
         for (int i = 0; i < (rockCount * Random.Range(1, 3)); i++)
         {

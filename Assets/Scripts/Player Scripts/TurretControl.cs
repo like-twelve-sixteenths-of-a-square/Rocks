@@ -15,9 +15,13 @@ public class TurretControl : MonoBehaviour
     private bool fireDelay;
     public float timeDelay;
 
+    private GameManager manager;
+
     void Start()
     {
         fireDelay = true;
+
+        manager = GameObject.Find("Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -25,40 +29,43 @@ public class TurretControl : MonoBehaviour
     {
         transform.position = anchor.transform.position;
 
-        if(Input.GetKey(KeyCode.J))
+        if (manager.gameRunning)
         {
-            transform.Rotate(Vector3.forward, turnSpeed * -1 * Time.deltaTime);
-        }
+            if (Input.GetKey(KeyCode.J))
+            {
+                transform.Rotate(Vector3.forward, turnSpeed * -1 * Time.deltaTime);
+            }
 
-        if (Input.GetKey(KeyCode.L))
-        {
-            transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime);
-        }
+            if (Input.GetKey(KeyCode.L))
+            {
+                transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime);
+            }
 
-        if (Input.GetKeyDown(KeyCode.K) && fireDelay)
-        {
-            fireDelay = false;
-            StartCoroutine(TonkProcess());
-        }
+            if (Input.GetKeyDown(KeyCode.K) && fireDelay)
+            {
+                fireDelay = false;
+                StartCoroutine(TonkProcess());
+            }
 
 
 
-        //Controlber Contogs
+            //Controlber Contogs
 
-        if (Input.GetButton("Left"))
-        {
-            transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime);
-        }
+            if (Input.GetButton("Left"))
+            {
+                transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime);
+            }
 
-        if (Input.GetButton("Right"))
-        {
-            transform.Rotate(Vector3.forward, turnSpeed * -1 * Time.deltaTime);
-        }
+            if (Input.GetButton("Right"))
+            {
+                transform.Rotate(Vector3.forward, turnSpeed * -1 * Time.deltaTime);
+            }
 
-        if (Input.GetButtonDown("Shoot") && fireDelay)
-        {
-            fireDelay = false;
-            StartCoroutine(TonkProcess());
+            if (Input.GetButtonDown("Shoot") && fireDelay)
+            {
+                fireDelay = false;
+                StartCoroutine(TonkProcess());
+            }
         }
     }
 

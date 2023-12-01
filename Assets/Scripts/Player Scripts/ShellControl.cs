@@ -6,14 +6,20 @@ public class ShellControl : MonoBehaviour
 {
     public float speed;
 
+    private GameManager manager;
+
     void Start()
     {
         StartCoroutine(DelayDeath());
+        manager = GameObject.Find("Manager").GetComponent<GameManager>();
     }
 
     void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        if (manager.gameRunning)
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
     }
 
     IEnumerator DelayDeath()

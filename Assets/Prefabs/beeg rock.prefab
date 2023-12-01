@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2755506772389943949}
   - component: {fileID: 2755506772389943948}
   - component: {fileID: 7650546080076003032}
-  - component: {fileID: 1463060454709638275}
   - component: {fileID: -7253562046230328750}
+  - component: {fileID: 8568524294719159273}
   m_Layer: 0
   m_Name: beeg rock
   m_TagString: Rock
@@ -126,19 +126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSplit: 1
   splitTo: {fileID: 3892423859009976039, guid: edacc1f84d1392b4ea086c6daf1ed251, type: 3}
---- !u!65 &1463060454709638275
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3097613558046733460}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.025577512, y: 0.028705794, z: 0.026210187}
-  m_Center: {x: -0.0007048375, y: 0.00069983536, z: 0.00039823912}
 --- !u!54 &-7253562046230328750
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -155,3 +142,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &8568524294719159273
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3097613558046733460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.0131050935
+  m_Height: 0.028705794
+  m_Direction: 1
+  m_Center: {x: -0.0007048375, y: 0.00069983536, z: -0.0005}

@@ -16,7 +16,7 @@ public class RockBreak : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Shell"))
+        if (other.gameObject.CompareTag("Shell") && manager.gameRunning)
         {
             manager.scoreCount++;
 
