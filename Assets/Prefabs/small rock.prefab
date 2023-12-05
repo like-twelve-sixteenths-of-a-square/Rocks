@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSplit: 0
   splitTo: {fileID: 0}
+  splitParticles: {fileID: 3440329288973421323, guid: 8d80ed84b7c34b147969fd4559894051, type: 3}
   rockBreak: {fileID: 8300000, guid: bca9fd3df56a1634884b2dd3c34ea8cd, type: 3}
 --- !u!65 &-2822860221588866363
 BoxCollider:

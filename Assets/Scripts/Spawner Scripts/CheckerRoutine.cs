@@ -47,7 +47,7 @@ public class CheckerRoutine : MonoBehaviour
         //Translation: If too close to the player, go somewhere else and try again, then continue on.
         while (spawnCheck)
         {
-            if ((player.transform.position.x - transform.position.x) <= 2 && (player.transform.position.z - transform.position.z) <= 2)
+            if ((player.transform.position.x - transform.position.x) <= 3 && (player.transform.position.z - transform.position.z) <= 3)
             {
                 Debug.Log("Spawn check failed, try again...");
                 Vector3 newPos = new Vector3(Random.Range(-maxX, maxX), 0, Random.Range(-maxZ, maxZ));

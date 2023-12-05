@@ -20,10 +20,13 @@ public class SpawnManager : MonoBehaviour
     public AudioClip warning;
     public AudioClip waveSpawn;
 
+    public TColorSw bodySwap;
+
     void Start()
     {
         //... so forth.
         manager = GameObject.Find("Manager").GetComponent<GameManager>();
+        bodySwap = GameObject.Find("Body").GetComponent<TColorSw>();
         audioSource = gameObject.GetComponent<AudioSource>();
     }
 
@@ -91,6 +94,7 @@ public class SpawnManager : MonoBehaviour
                 //...finally, start the next wave, wait a moment as the checkers are sent out, then start the loop again.
                 audioSource.PlayOneShot(waveSpawn);
                 SpawnNextWave(waveNumber);
+                bodySwap.StartCoroutine("SwappoColore");
 
                 yield return new WaitForSeconds(1);
             }

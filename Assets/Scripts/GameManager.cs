@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //When you press P and the game has yet to start or end...
-        if (Input.GetKeyDown(KeyCode.P) && !gameRunning && !gameOver)
+        if (Input.GetButtonDown("Start") && !gameRunning && !gameOver)
         {
             //...hide the start screen
             startScreen1.enabled = false;
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         }
 
         //If the game is over and no longer running, press O to start over.
-        if (Input.GetKeyDown(KeyCode.O) && gameOver && !gameRunning)
+        if (Input.GetButtonDown("Coin") && gameOver && !gameRunning)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

@@ -25,6 +25,10 @@ public class BodyMovement : MonoBehaviour
     //Noise Troubleshooting
     private bool makingNoise;
 
+    //Particle Systems
+    public GameObject boom;
+    public GameObject burn;
+
     void Start()
     {
         //yippee
@@ -92,9 +96,17 @@ public class BodyMovement : MonoBehaviour
             manager.gameRunning = false;
             manager.gameOver = true;
 
+            StartCoroutine(boomProcess());
             audioSource.PlayOneShot(tankBoom);
             manager.endScreen1.enabled = true;
             manager.endScreen2.enabled = true;
         }
+    }
+
+    IEnumerator boomProcess()
+    {
+        Instantiate(boom, transform.position, boom.transform.rotation);
+        yield return new WaitForSeconds(1);
+        Instantiate(burn, transform.position, burn.transform.rotation);
     }
 }

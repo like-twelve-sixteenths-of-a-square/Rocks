@@ -586,7 +586,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press the [p] to start.
+  m_text: Press Start to Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -882,6 +882,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &729336558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 729336559}
+  m_Layer: 0
+  m_Name: ParticleAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &729336559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729336558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.00013462854, z: 0.19845977}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2039572027}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &771155599
 GameObject:
@@ -1637,7 +1668,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press the [o] to start over.
+  m_text: Inset Coin to Start Again
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1909,7 +1940,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.04010543, z: -0.006587906}
   m_LocalScale: {x: 0.013333333, y: 0.039999988, z: 0.013333331}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 729336559}
   m_Father: {fileID: 1445768459431249020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1925,7 +1957,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c304dd6fc9e334091e466364bd248b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchor: {fileID: 729336558}
   pew: {fileID: 8300000, guid: fcdb8d090324246478b551e3fb545160, type: 3}
+  pewticles: {fileID: 503632069228031744, guid: 2df107dd093ea7e408a3dc25d7403821, type: 3}
 --- !u!82 &2039572029
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2074,6 +2108,7 @@ MonoBehaviour:
   good: {fileID: 8300000, guid: 0da05abdd1acf2345be195e6d57fb52b, type: 3}
   warning: {fileID: 8300000, guid: b6d1651349ea71540bcaea9540206135, type: 3}
   waveSpawn: {fileID: 8300000, guid: 043d12284213ff041b71cf8a94ec7253, type: 3}
+  bodySwap: {fileID: 0}
 --- !u!82 &2070129407
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2225,6 +2260,7 @@ GameObject:
   - component: {fileID: 3771225137628168101}
   - component: {fileID: 6000236966504026188}
   - component: {fileID: 871020877876123729}
+  - component: {fileID: 6000236966504026189}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -2322,6 +2358,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031268575011241593}
   m_Mesh: {fileID: -1550514412580984892, guid: dda526c03c0705947a2e042c2757bf85, type: 3}
+--- !u!114 &6000236966504026189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031268575011241593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83da39d110d88274c963226a0fdb4084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {fileID: 2100000, guid: 6b8ff7eafd848c64ea26c9c092beaebf, type: 2}
+  - {fileID: 2100000, guid: 7a2ef8d3608072147bb3ea74e54b05d6, type: 2}
+  - {fileID: 2100000, guid: 7a41509e0cbffa349bc899ec5e217970, type: 2}
+  - {fileID: 2100000, guid: d00578de8dc917a4c9d1467914899045, type: 2}
+  - {fileID: 2100000, guid: 47b9e1925e1fcc647a79d4738fb09d23, type: 2}
+  - {fileID: 2100000, guid: 10c37ad286f2a154e9760374f2e41cab, type: 2}
+  - {fileID: 2100000, guid: 177781c8177b5064681126d3724ccc47, type: 2}
+  mr: {fileID: 0}
 --- !u!1 &7372712718973408237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,6 +2392,7 @@ GameObject:
   - component: {fileID: 1033104805018670818}
   - component: {fileID: 7372712718973408238}
   - component: {fileID: 7372712718973408239}
+  - component: {fileID: 7372712718973408240}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -2456,6 +2514,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7372712718973408240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7372712718973408237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83da39d110d88274c963226a0fdb4084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {fileID: 2100000, guid: 6b8ff7eafd848c64ea26c9c092beaebf, type: 2}
+  - {fileID: 2100000, guid: 7a2ef8d3608072147bb3ea74e54b05d6, type: 2}
+  - {fileID: 2100000, guid: 7a41509e0cbffa349bc899ec5e217970, type: 2}
+  - {fileID: 2100000, guid: d00578de8dc917a4c9d1467914899045, type: 2}
+  - {fileID: 2100000, guid: 47b9e1925e1fcc647a79d4738fb09d23, type: 2}
+  - {fileID: 2100000, guid: 10c37ad286f2a154e9760374f2e41cab, type: 2}
+  - {fileID: 2100000, guid: 177781c8177b5064681126d3724ccc47, type: 2}
+  mr: {fileID: 0}
 --- !u!1 &8521441972090471117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2509,6 +2588,8 @@ MonoBehaviour:
   speed: 5
   turnSpeed: 90
   tankBoom: {fileID: 8300000, guid: f5d104c0a1b890c47a2046c05f04d341, type: 3}
+  boom: {fileID: 963645872710005673, guid: 00ee93bd84b258b49bd42d5e1081265f, type: 3}
+  burn: {fileID: 531957242029695266, guid: becea38034fa55046902a48855791b91, type: 3}
 --- !u!114 &9009995311237486713
 MonoBehaviour:
   m_ObjectHideFlags: 0

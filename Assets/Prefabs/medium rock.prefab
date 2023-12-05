@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSplit: 1
   splitTo: {fileID: 3923823926479371651, guid: d86a0ff8bca4aa844bfee19cee70239b, type: 3}
+  splitParticles: {fileID: 8428314759591673929, guid: de0d7cc2513a08245b033810d20d0abe, type: 3}
   rockBreak: {fileID: 8300000, guid: bca9fd3df56a1634884b2dd3c34ea8cd, type: 3}
 --- !u!54 &-3016513704735369467
 Rigidbody:

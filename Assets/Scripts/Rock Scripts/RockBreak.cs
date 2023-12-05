@@ -7,6 +7,7 @@ public class RockBreak : MonoBehaviour
     //If the rock can split apart, and what it splits into
     public bool canSplit;
     public GameObject splitTo;
+    public GameObject splitParticles;
 
     //Access GameManager
     private GameManager manager;
@@ -44,6 +45,8 @@ public class RockBreak : MonoBehaviour
                     Instantiate(splitTo, transform.position, transform.rotation);
                 }
             }
+            Instantiate(splitParticles, transform.position, splitParticles.transform.rotation);
+
             //.. cease existence
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<Collider>().enabled = false;
