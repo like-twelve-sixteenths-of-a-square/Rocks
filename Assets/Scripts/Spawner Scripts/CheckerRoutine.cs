@@ -55,7 +55,16 @@ public class CheckerRoutine : MonoBehaviour
             }
             else
             {
-                spawnCheck = false;
+                if ((player.transform.position.x - transform.position.x) <= -3 && (player.transform.position.z - transform.position.z) <= -3)
+                {
+                    Debug.Log("Spawn check failed, try again...");
+                    Vector3 newPos = new Vector3(Random.Range(-maxX, maxX), 0, Random.Range(-maxZ, maxZ));
+                    transform.position = newPos;
+                }
+                else
+                {
+                    spawnCheck = false;
+                }
             }
         }
         //Just console reporting to ensure it's all going smooth

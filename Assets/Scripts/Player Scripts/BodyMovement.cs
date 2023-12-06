@@ -21,6 +21,7 @@ public class BodyMovement : MonoBehaviour
 
     //Noises
     public AudioClip tankBoom;
+    public AudioClip rockHit;
 
     //Noise Troubleshooting
     private bool makingNoise;
@@ -97,16 +98,25 @@ public class BodyMovement : MonoBehaviour
             manager.gameOver = true;
 
             StartCoroutine(boomProcess());
-            audioSource.PlayOneShot(tankBoom);
-            manager.endScreen1.enabled = true;
-            manager.endScreen2.enabled = true;
         }
     }
 
     IEnumerator boomProcess()
     {
+        audioSource.PlayOneShot(rockHit);
+        yield return new WaitForSeconds(1);
+        audioSource.PlayOneShot(tankBoom);
         Instantiate(boom, transform.position, boom.transform.rotation);
         yield return new WaitForSeconds(1);
         Instantiate(burn, transform.position, burn.transform.rotation);
+        while (true)
+        {
+            manager.endScreen1.enabled = true;
+            manager.endScreen2.enabled = true;
+            yield return new WaitForSeconds(0.75f);
+            manager.endScreen1.enabled = false;
+            manager.endScreen2.enabled = false;
+            yield return new WaitForSeconds(0.75f);
+        }
     }
 }

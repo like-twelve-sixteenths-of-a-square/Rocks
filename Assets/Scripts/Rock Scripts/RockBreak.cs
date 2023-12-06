@@ -25,6 +25,9 @@ public class RockBreak : MonoBehaviour
 
         //Contacts the AudioSource
         audioSource = gameObject.GetComponent<AudioSource>();
+
+        //Just spawn particles for the fancy
+        Instantiate(splitParticles, transform.position, splitParticles.transform.rotation);
     }
 
     private void OnTriggerEnter(Collider other)
