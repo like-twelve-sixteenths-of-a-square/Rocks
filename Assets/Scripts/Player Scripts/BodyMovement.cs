@@ -112,10 +112,8 @@ public class BodyMovement : MonoBehaviour
         while (true)
         {
             manager.endScreen1.enabled = true;
-            manager.endScreen2.enabled = true;
             yield return new WaitForSeconds(0.75f);
             manager.endScreen1.enabled = false;
-            manager.endScreen2.enabled = false;
             yield return new WaitForSeconds(0.75f);
         }
     }

@@ -16,11 +16,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI nextWaveText1;
     public TextMeshProUGUI nextWaveText2;
 
-    public TextMeshProUGUI startScreen1;
-    public TextMeshProUGUI startScreen2;
+    public Image startScreen1;
+    public Image startScreen2;
 
-    public TextMeshProUGUI endScreen1;
-    public TextMeshProUGUI endScreen2;
+    public Image endScreen1;
 
     public Image cover;
 
@@ -55,7 +54,6 @@ public class GameManager : MonoBehaviour
 
         //...and the end screen is hidden...
         endScreen1.enabled = false;
-        endScreen2.enabled = false;
 
         //...and hide the screen cover...
         cover.enabled = false;
