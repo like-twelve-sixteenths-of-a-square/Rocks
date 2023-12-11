@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     public Image cover;
 
+    public Image backer;
+
     //Contacts the SpawnManager...
     public SpawnManager spawner;
     //...and the AudioSource.
@@ -120,6 +122,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RestartProcess()
     {
+        //Covers the screen with a black rectangle for a second, then restarts the game
         cover.enabled = true;
         audioSource.PlayOneShot(shutOff);
         yield return new WaitForSeconds(1);
@@ -128,6 +131,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartScreenFlicker()
     {
+        //Just makes the "press start to play" button blink slowly.
         while (!gameRunning)
         {
             startScreen2.enabled = true;
@@ -135,5 +139,15 @@ public class GameManager : MonoBehaviour
             startScreen2.enabled = false;
             yield return new WaitForSeconds(1);
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        backer.enabled = false;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        backer.enabled = true;
     }
 }

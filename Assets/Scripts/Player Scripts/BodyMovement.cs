@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Security;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -101,6 +102,8 @@ public class BodyMovement : MonoBehaviour
         }
     }
 
+    //When you hit the rock, play a hit sound, wait a moment, then the tank explodes, wait another moment,
+    //then set the tank on fire and make the end screen slowly blink. 
     IEnumerator boomProcess()
     {
         audioSource.PlayOneShot(rockHit);

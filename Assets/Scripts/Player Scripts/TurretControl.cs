@@ -59,7 +59,7 @@ public class TurretControl : MonoBehaviour
                 StartCoroutine(TonkProcess());
             }
 
-            //Rotation noise figuring out
+            //Plays the rotation noise if turning, stops playing if not.
             if (Input.GetButton("Left") && !audioSource.isPlaying)
             {
                 audioSource.Play();
