@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI wave;
     public TextMeshProUGUI rocks;
 
-    public TextMeshProUGUI nextWaveText1;
-    public TextMeshProUGUI nextWaveText2;
+    public Image nextWaveText1;
+    public Image nextWaveText2;
 
     public Image startScreen1;
     public Image startScreen2;
